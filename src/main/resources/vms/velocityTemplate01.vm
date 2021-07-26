@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+hello , ${name}
+## 这是一个单行注释,注释的内容不会被输出
+#*
+* 这是一个多行注释
+*
+* *#
+#**
+  这是一个文档注释
+* *#
+<hr>
+<h3>非解析内容</h3>
+#[[
+	非解析内容1 ${name1}
+	非解析内容2 ${name2}
+]]#
+<hr>
+<h3>引用变量</h3>
+常规语法上下文context中有变量 : $name 常规语法上下文context中没有变量$name1<br>
+正规语法下文context中有变量 : ${name} 正规语法下文context没中有变量${name1}<br>
+<br>
+## 如果获取的变量不存在, 表达式会原样展示 , 如果不想展示 , 可以使用 $!变量名
+## 以下写法的含义代表么如果有变量, 那么获取变量值展示, 没有变量展示""
+常规语法上下文context中有变量 : $!name 规语法上下文context中没有变量$!name1<br>
+正规语法下文context中有变量 : $!{name} 正规语法下文context没中有变量$!{name1}<br>
+<hr>
+<h3>引用属性</h3>
+常规语法 : $user01.username --- $user01.password --- $user01.email<br>
+正规语法 : ${user01.username} --- ${user01.password} --- ${user01.email}<br>
+<br>
+常规语法 : ${user01.username} --- ${user01.password} --- ${user01.email}<br>
+正规语法 : $!{user01.username} --- $!{user01.password} --- $!{user01.email}<br>
+<br>
+常规语法 : $user02.username --- $user02.password --- $user02.email<br>
+正规语法 : ${user02.username} --- ${user02.password} --- ${user02.email}<br>
+<br>
+常规语法 : ${user02.username} --- ${user02.password} --- ${user02.email}<br>
+正规语法 : $!{user02.username} --- $!{user02.password} --- $!{user02.email}<br>
+<hr>
+<h3>方法引用</h3>
+$str.split(" ")<br>
+${str.split(" ")}<br>
+$now.getTime()<br>
+${now.getTime()}<br>
+<hr>
+<h3>指令</h3>
+#set($str = "hello world")
+#set($int = 1)
+#set($arr = [1,2])
+#set($boolean = true)
+#set($map = {"key1":"value1", "key2":"value2"})
+
+## 在字符串中也可以引用之前定义过的变量
+#set($str2 = "$str , how are you !")
+#set($str3 = '$str , how are you !')
+    
+
+<h3>获取set指令定义的变量</h3>
+${str}
+${int}
+${arr}
+${boolean}
+${map.key1}--${map.key2}
+${str2}
+${str3}
+
+<hr>
+<h3>if/elseif/else</h3>
+#set($language="PHP")
+#if($language.equals("JAVA"))
+    java开发工程师
+#elseif($language.equals("PHP"))
+    php开发工程师
+#else
+    开发工程师
+#end			
+<hr>
+<h3>foreach</h3>
+<h4>遍历数组</h4>
+#foreach($str in $hobbies)
+    ${foreach.index} -- ${str}  <br>
+#end
+<h4>遍历集合</h4>
+<table border="1px" align="center" style="float:left;width:100%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    #foreach($user in $users)
+        <tr>
+            <td>${foreach.index}</td>
+            <td>${user.username}</td>
+            <td>${user.password}</td>
+            <td>${user.email}</td>
+            <td>${user.age}</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+    #end
+</table>
+<br><br />
+<h4>遍历map集合</h4>
+ #foreach($value in $map2)
+     $value<br>
+ #end
+<h4>遍历键值对</h4>
+#foreach($entry in $map2.entrySet())
+    $entry.key -- $entry.value<br>
+#end
+<hr>
+<h3>include 引入外部文件,不会被解析</h3>
+#include("vms/reference.vm")
+<hr>
+<h3>parse 引入外部文件,会被解析</h3>
+#parse("vms/reference.vm")
+<hr>
+<h3>define 定义重用模块（不带参数）</h3>
+#define($table)
+<table border="1px" style="float:left; width:33%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>zhangsan</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>lisi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>wangwu</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tianqi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+</table>
+#end
+<h3>使用模块</h3>
+$table
+$table
+$table
+<hr>
+<h3>evaluate 动态计算 , 动态计算可以让我们在字符串中使用变量 </h3>
+#set($name = "over")
+${code}<br />
+#evaluate($code)<br />
+${code2}<br />
+#evaluate($code2)<br />
+#evaluate("#if($name=='over') over  #else  not over #end")<br />
+#if($name=='over')
+    over
+#else
+    not over
+#end
+<hr>
+<h3 >宏指令 定义重用模块（可带参数）</h3>
+#macro(table $list)
+<table border="1px">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    #foreach($item in $list)
+    <tr>
+        <td>${foreach.count}</td>
+        <td>${item.username}</td>
+        <td>${item.password}</td>
+        <td>${item.email}</td>
+        <td>${item.age}</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    #end
+</table>
+#end
+<h3>调用宏</h3>
+#table($users)
+</body>
+</html>

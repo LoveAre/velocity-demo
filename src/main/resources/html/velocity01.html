@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+hello , hello velocity
+
+
+<hr>
+<h3>非解析内容</h3>
+
+	非解析内容1 ${name1}
+	非解析内容2 ${name2}
+
+<hr>
+<h3>引用变量</h3>
+常规语法上下文context中有变量 : hello velocity 常规语法上下文context中没有变量$name1<br>
+正规语法下文context中有变量 : hello velocity 正规语法下文context没中有变量${name1}<br>
+<br>
+常规语法上下文context中有变量 : hello velocity 规语法上下文context中没有变量<br>
+正规语法下文context中有变量 : hello velocity 正规语法下文context没中有变量<br>
+<hr>
+<h3>引用属性</h3>
+常规语法 : 唐三藏 --- tangsanzang --- @tangsanzang.com<br>
+正规语法 : 唐三藏 --- tangsanzang --- @tangsanzang.com<br>
+<br>
+常规语法 : 唐三藏 --- tangsanzang --- @tangsanzang.com<br>
+正规语法 : 唐三藏 --- tangsanzang --- @tangsanzang.com<br>
+<br>
+常规语法 : 孙悟空 --- sunwukong --- $user02.email<br>
+正规语法 : 孙悟空 --- sunwukong --- ${user02.email}<br>
+<br>
+常规语法 : 孙悟空 --- sunwukong --- ${user02.email}<br>
+正规语法 : 孙悟空 --- sunwukong --- <br>
+<hr>
+<h3>方法引用</h3>
+[hello, world, velocity, !]<br>
+[hello, world, velocity, !]<br>
+1624933587049<br>
+1624933587049<br>
+<hr>
+<h3>指令</h3>
+
+    
+
+<h3>获取set指令定义的变量</h3>
+hello world
+1
+[1, 2]
+true
+value1--value2
+hello world , how are you !
+$str , how are you !
+
+<hr>
+<h3>if/elseif/else</h3>
+    php开发工程师
+<hr>
+<h3>foreach</h3>
+<h4>遍历数组</h4>
+    0 -- 吃饭  <br>
+    1 -- 睡觉  <br>
+    2 -- 打豆豆  <br>
+<h4>遍历集合</h4>
+<table border="1px" align="center" style="float:left;width:100%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+        <tr>
+            <td>0</td>
+            <td>唐三藏</td>
+            <td>tangsanzang</td>
+            <td>@tangsanzang</td>
+            <td>1</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>孙悟空</td>
+            <td>sunwukong</td>
+            <td>@sunwukong</td>
+            <td>2</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>猪八戒</td>
+            <td>zhubajie</td>
+            <td>@zhubajie</td>
+            <td>3</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>白龙马</td>
+            <td>bailongma</td>
+            <td>@bailongma</td>
+            <td>4</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>白骨精</td>
+            <td>baigujing</td>
+            <td>@baigujing</td>
+            <td>5</td>
+            <td>
+                <a href="">编辑</a>
+                <a href="">删除</a>
+            </td>
+        </tr>
+</table>
+<br><br />
+<h4>遍历map集合</h4>
+     User [username=唐三藏, password=tangsanzang, email=@tangsanzang, age=1]<br>
+     User [username=孙悟空, password=sunwukong, email=@sunwukong, age=2]<br>
+     User [username=猪八戒, password=zhubajie, email=@zhubajie, age=3]<br>
+     User [username=白龙马, password=bailongma, email=@bailongma, age=4]<br>
+     User [username=白骨精, password=baigujing, email=@baigujing, age=5]<br>
+<h4>遍历键值对</h4>
+    0 -- User [username=唐三藏, password=tangsanzang, email=@tangsanzang, age=1]<br>
+    1 -- User [username=孙悟空, password=sunwukong, email=@sunwukong, age=2]<br>
+    2 -- User [username=猪八戒, password=zhubajie, email=@zhubajie, age=3]<br>
+    3 -- User [username=白龙马, password=bailongma, email=@bailongma, age=4]<br>
+    4 -- User [username=白骨精, password=baigujing, email=@baigujing, age=5]<br>
+<hr>
+<h3>include 引入外部文件,不会被解析</h3>
+${name}<hr>
+<h3>parse 引入外部文件,会被解析</h3>
+hello velocity<hr>
+<h3>define 定义重用模块（不带参数）</h3>
+<h3>使用模块</h3>
+<table border="1px" style="float:left; width:33%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>zhangsan</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>lisi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>wangwu</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tianqi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+</table>
+
+<table border="1px" style="float:left; width:33%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>zhangsan</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>lisi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>wangwu</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tianqi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+</table>
+
+<table border="1px" style="float:left; width:33%">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>zhangsan</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>lisi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>wangwu</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tianqi</td>
+        <td>123456</td>
+        <td>zhangsan@qq.com</td>
+        <td>18</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+</table>
+
+<hr>
+<h3>evaluate 动态计算 , 动态计算可以让我们在字符串中使用变量 </h3>
+#if($name=='over') over  #else  not over #end<br />
+ over  <br />
+"#if($name=='over') over  #else  not over #end"<br />
+" over  "<br />
+ over  <br />
+    over
+<hr>
+<h3 >宏指令 定义重用模块（可带参数）</h3>
+<h3>调用宏</h3>
+<table border="1px">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>邮箱</td>
+        <td>年龄</td>
+        <td>操作</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>唐三藏</td>
+        <td>tangsanzang</td>
+        <td>@tangsanzang</td>
+        <td>1</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>孙悟空</td>
+        <td>sunwukong</td>
+        <td>@sunwukong</td>
+        <td>2</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>猪八戒</td>
+        <td>zhubajie</td>
+        <td>@zhubajie</td>
+        <td>3</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>白龙马</td>
+        <td>bailongma</td>
+        <td>@bailongma</td>
+        <td>4</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>白骨精</td>
+        <td>baigujing</td>
+        <td>@baigujing</td>
+        <td>5</td>
+        <td>
+            <a href="">编辑</a>
+            <a href="">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
